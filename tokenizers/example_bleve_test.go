@@ -5,7 +5,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/blevesearch/bleve"
+	"github.com/blevesearch/bleve/v2"
+	"github.com/blevesearch/bleve/v2/analysis/analyzer/custom"
 	_ "github.com/wangbin/jiebago/tokenizers"
 )
 
@@ -25,7 +26,7 @@ func Example_beleveSearch() {
 	// create a custom analyzer
 	err = indexMapping.AddCustomAnalyzer("jieba",
 		map[string]interface{}{
-			"type":      "custom",
+			"type":      custom.Name,
 			"tokenizer": "jieba",
 			"token_filters": []string{
 				"possessive_en",
